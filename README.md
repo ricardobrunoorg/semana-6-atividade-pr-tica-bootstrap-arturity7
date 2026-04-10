@@ -9,18 +9,18 @@ No trabalho dessa semana vamos alterar o projeto para que a responsividade da ho
 
 ## Informações Gerais
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome: Arthur Gabriel de Oliveira Fonseca Santos
+- Matricula: 924860
+- Proposta de projeto escolhida: A ideia é refazer de maneira breve o firefox
+- Breve descrição sobre seu projeto: O projeto é uma cópia do firefox, sem a pesquisa, mas com suas funções de clicar em ícones e entrar em páginas como suas configurações.
 
 ## Print da versão responsiva com Bootstrap [DESKTOP]
 
-<<  COLOQUE A IMAGEM AQUI >>
+![desktop](image.png)
 
 ## Print da versão responsiva com Bootstrap [MOBILE] (*)
 
-<<  COLOQUE A IMAGEM AQUI >>
+![mobile](image-1.png)
 
 
 (*) Utilize as ferramentas do desenvolvedor do seu navegador para colocar no modo reponsivo, escolha um celular qualquer e recarregue a página antes de tirar o print. 

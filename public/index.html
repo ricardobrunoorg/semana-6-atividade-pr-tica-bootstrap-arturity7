@@ -1,12 +1,359 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firefox — Nova Guia</title>
+
+  <!-- ① Bootstrap 5 CSS via CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- ② Bootstrap Icons via CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+  />
+  <!-- ③ CSS próprio (apenas visual — sem media-query, flexbox ou grid manuais) -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+
+  <!-- ── Widget clima fixo (canto superior direito) ── -->
+  <div class="weather-widget d-none d-md-flex align-items-center gap-2">
+    <i class="bi bi-cloud-sun weather-icon"></i>
+    <div class="weather-text">
+      <span class="weather-temp d-block">23°C</span>
+      <span class="weather-city d-block">Belo Horizonte</span>
+    </div>
+    <button class="weather-dots" aria-label="Opções">
+      <i class="bi bi-three-dots"></i>
+    </button>
+  </div>
+
+  <!-- ── Botão editar fixo (canto inferior direito) ── -->
+  <button class="btn-edit" aria-label="Personalizar">
+    <i class="bi bi-pencil"></i>
+  </button>
+
+  <!-- ══════════════════════════════════════════
+       HEADER — Bootstrap Navbar
+  ══════════════════════════════════════════ -->
+  <header>
+    <nav class="navbar navbar-expand-md fixed-top" id="mainNavbar">
+      <div class="container-fluid px-4">
+
+        <!-- Logo + nome do site -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/120px-Firefox_logo%2C_2019.svg.png"
+            alt="Logo Firefox"
+            class="navbar-logo"
+          />
+          <span class="navbar-site-name">Firefox</span>
+        </a>
+
+        <!-- Botão hamburguer gerado pelo Bootstrap -->
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navLinks"
+          aria-controls="navLinks"
+          aria-expanded="false"
+          aria-label="Abrir menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links internos -->
+        <div class="collapse navbar-collapse justify-content-end" id="navLinks">
+          <ul class="navbar-nav gap-1 py-2 py-md-0">
+            <li class="nav-item"><a class="nav-link active" href="#inicio">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="#atalhos">Atalhos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#recursos">Recursos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       MAIN — banner principal + busca + intro
+  ══════════════════════════════════════════ -->
+  <main id="inicio">
+    <div class="container">
+      <!-- Bootstrap: centraliza em col-12 → col-md-10 → col-lg-8 -->
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+
+          <!-- Banner / imagem principal -->
+          <div class="hero-brand d-flex align-items-center justify-content-center gap-3 mb-4">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/120px-Firefox_logo%2C_2019.svg.png"
+              alt="Firefox"
+              class="hero-logo"
+            />
+            <h1 class="hero-title mb-0">Firefox</h1>
+          </div>
+
+          <!-- Barra de busca -->
+          <div class="search-bar d-flex align-items-center gap-2 mb-4">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png"
+              alt="Google"
+              class="search-google-icon"
+            />
+            <input
+              type="text"
+              class="form-control search-input border-0 bg-transparent shadow-none"
+              placeholder="Search with Google or enter address"
+              aria-label="Pesquisar"
+            />
+          </div>
+
+          <!-- Texto introdutório obrigatório -->
+          <p class="intro-text">
+            Navegue com liberdade. O <strong>Firefox</strong> protege sua privacidade,
+            bloqueia rastreadores e coloca você no controle da sua experiência online.
+            Desenvolvido pela Mozilla Foundation — gratuito e de código aberto desde 2004.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══════════════════════════════════════════
+       SECTION — atalhos / shortcuts
+  ══════════════════════════════════════════ -->
+  <section id="atalhos" class="section-atalhos">
+    <div class="container">
+      <!--
+        Bootstrap d-flex + flex-wrap: linha no desktop, quebra no mobile.
+        justify-content-center centraliza os ícones igual ao screenshot.
+      -->
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+
+        <a href="https://youtube.com" target="_blank" class="shortcut-card text-center text-decoration-none">
+          <div class="shortcut-icon mx-auto">
+            <img src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt="YouTube" />
+          </div>
+          <span class="shortcut-name d-block mt-2">YouTube</span>
+          <span class="shortcut-sub d-block">Vídeos e músicas</span>
+        </a>
+
+        <a href="https://chat.openai.com" target="_blank" class="shortcut-card text-center text-decoration-none">
+          <div class="shortcut-icon mx-auto">
+            <img src="https://www.google.com/s2/favicons?sz=64&domain=chat.openai.com" alt="ChatGPT" />
+          </div>
+          <span class="shortcut-name d-block mt-2">ChatGPT</span>
+          <span class="shortcut-sub d-block">IA da OpenAI</span>
+        </a>
+
+        <a href="https://figma.com" target="_blank" class="shortcut-card text-center text-decoration-none">
+          <div class="shortcut-icon mx-auto">
+            <img src="https://www.google.com/s2/favicons?sz=64&domain=figma.com" alt="Figma" />
+          </div>
+          <span class="shortcut-name d-block mt-2">Trainify – Figma</span>
+          <span class="shortcut-sub d-block">Design colaborativo</span>
+        </a>
+
+        <a href="https://instagram.com" target="_blank" class="shortcut-card text-center text-decoration-none">
+          <div class="shortcut-icon mx-auto">
+            <img src="https://www.google.com/s2/favicons?sz=64&domain=instagram.com" alt="Instagram" />
+          </div>
+          <span class="shortcut-name d-block mt-2">Instagram</span>
+          <span class="shortcut-sub d-block">Fotos e reels</span>
+        </a>
+
+        <a href="https://calendar.google.com" target="_blank" class="shortcut-card text-center text-decoration-none">
+          <div class="shortcut-icon mx-auto">
+            <img src="https://www.google.com/s2/favicons?sz=64&domain=calendar.google.com" alt="Calendar" />
+          </div>
+          <span class="shortcut-name d-block mt-2">Calendar</span>
+          <span class="shortcut-sub d-block">Seus eventos</span>
+        </a>
+
+        <a href="https://github.com" target="_blank" class="shortcut-card text-center text-decoration-none">
+          <div class="shortcut-icon mx-auto">
+            <img src="https://www.google.com/s2/favicons?sz=64&domain=github.com" alt="GitHub" />
+          </div>
+          <span class="shortcut-name d-block mt-2">GitHub</span>
+          <span class="shortcut-sub d-block">Código aberto</span>
+        </a>
+
+        <a href="https://ionicframework.com" target="_blank" class="shortcut-card text-center text-decoration-none">
+          <div class="shortcut-icon mx-auto">
+            <img src="https://www.google.com/s2/favicons?sz=64&domain=ionicframework.com" alt="Ionic" />
+          </div>
+          <span class="shortcut-name d-block mt-2">Ionic App</span>
+          <span class="shortcut-sub d-block">Apps mobile</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION — recursos  (2 col desktop / 1 col mobile)
+       Bootstrap: col-12 → col-md-6
+  ══════════════════════════════════════════ -->
+  <section id="recursos" class="section-recursos">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Por que usar o Firefox?</h2>
+
+      <div class="row g-4">
+
+        <!-- Card 1 -->
+        <div class="col-12 col-md-6">
+          <div class="recurso-card h-100">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/120px-Firefox_logo%2C_2019.svg.png"
+              alt="Privacidade"
+              class="recurso-img"
+            />
+            <div class="recurso-body">
+              <span class="recurso-tag">Privacidade</span>
+              <h3>Proteção contra rastreadores</h3>
+              <p>Bloqueio automático de cookies de terceiros e scripts de mineração de dados em cada página visitada.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-12 col-md-6">
+          <div class="recurso-card h-100">
+            <img
+              src="https://www.google.com/s2/favicons?sz=128&domain=addons.mozilla.org"
+              alt="Extensões"
+              class="recurso-img"
+            />
+            <div class="recurso-body">
+              <span class="recurso-tag">Extensões</span>
+              <h3>Milhares de add-ons gratuitos</h3>
+              <p>Personalize o navegador com extensões para produtividade, segurança, design e muito mais.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-12 col-md-6">
+          <div class="recurso-card h-100">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/120px-Firefox_logo%2C_2019.svg.png"
+              alt="Sync"
+              class="recurso-img"
+            />
+            <div class="recurso-body">
+              <span class="recurso-tag">Sincronização</span>
+              <h3>Firefox Sync</h3>
+              <p>Favoritos, senhas e abas sincronizados em todos os dispositivos com criptografia ponta a ponta.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-12 col-md-6">
+          <div class="recurso-card h-100">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/120px-Firefox_logo%2C_2019.svg.png"
+              alt="Performance"
+              class="recurso-img"
+            />
+            <div class="recurso-body">
+              <span class="recurso-tag">Performance</span>
+              <h3>Motor Quantum</h3>
+              <p>Carregamento mais rápido de páginas e uso otimizado de memória RAM para navegação fluida.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION — sobre
+       Bootstrap: flex-column → flex-md-row
+  ══════════════════════════════════════════ -->
+  <section id="sobre" class="section-sobre">
+    <div class="container">
+      <div class="sobre-inner d-flex flex-column flex-md-row align-items-center gap-4 text-center text-md-start">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/240px-Firefox_logo%2C_2019.svg.png"
+          alt="Firefox"
+          class="sobre-logo flex-shrink-0"
+        />
+        <div>
+          <h2 class="sobre-title">Sobre o Firefox</h2>
+          <p class="sobre-desc mb-0">
+            Desenvolvido pela <strong>Mozilla Foundation</strong> desde 2004, o Firefox
+            é um navegador de código aberto comprometido com a liberdade e privacidade
+            na internet. Disponível gratuitamente para Windows, macOS, Linux, Android e iOS.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+       Bootstrap: col-12 → col-md-6
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="row gy-4 align-items-start">
+
+        <!-- Marca + descrição -->
+        <div class="col-12 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/120px-Firefox_logo%2C_2019.svg.png"
+              alt="Firefox"
+              class="footer-logo"
+            />
+            <span class="footer-brand-name">Firefox</span>
+          </div>
+          <p class="footer-desc mb-0">
+            Mozilla Firefox — navegador gratuito e de código aberto.
+            Proteja sua privacidade e navegue com liberdade.
+          </p>
+        </div>
+
+        <!-- Redes sociais -->
+        <div class="col-12 col-md-6 d-flex flex-column align-items-md-end">
+          <p class="footer-social-label mb-2">Redes sociais</p>
+          <div class="d-flex gap-2">
+            <a href="https://github.com/mozilla"            target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="https://twitter.com/firefox"           target="_blank" rel="noopener" class="social-link" aria-label="Twitter">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+            <a href="https://www.instagram.com/firefox"     target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@firefoxchannel" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+              <i class="bi bi-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+
+      <hr class="footer-hr" />
+      <p class="footer-copy text-center mb-0">
+        © 2025 Mozilla Foundation — Firefox é gratuito e de código aberto.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ② Bootstrap JS Bundle via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
